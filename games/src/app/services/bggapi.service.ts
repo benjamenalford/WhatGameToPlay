@@ -7,11 +7,13 @@ import { Injectable } from '@angular/core';
 })
 export class BGGApiService {
 
+  userName = 'edwalter';
+
   constructor(private http: HttpClient) { }
 
   getGameList() {
     // https://bgg-json.azurewebsites.net/collection/edwalter
-    this.http.get('https://bgg-json.azurewebsites.net/collection/edwalter').subscribe(e => console.log(e));
+    this.http.get('https://bgg-json.azurewebsites.net/collection/' + this.userName).subscribe(e => console.log(e));
 
   }
 }
