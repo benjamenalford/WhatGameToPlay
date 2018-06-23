@@ -1,5 +1,5 @@
 import { LayoutModule } from '@angular/cdk/layout';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import {
   MatButtonModule,
@@ -45,7 +45,7 @@ import { SideNavComponent } from './side-nav/side-nav.component';
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-    HttpClient
+    HttpClientModule
   ],
   providers: [BGGApiService],
   bootstrap: [AppComponent]
