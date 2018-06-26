@@ -12,8 +12,9 @@ export class BGGApiService {
   constructor(private http: HttpClient) { }
 
   getGameList() {
+
     // https://bgg-json.azurewebsites.net/collection/edwalter
-    this.http.get('https://bgg-json.azurewebsites.net/collection/' + this.userName).subscribe(e => console.log(e));
+    return this.http.get('https://bgg-json.azurewebsites.net/collection/' + this.userName);
 
   }
 }
