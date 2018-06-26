@@ -14,7 +14,7 @@ export class GameListComponent implements OnInit {
   dataSource: GameListDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['gameId', 'name', 'minPlayers', 'maxPlayers'];
 
   ngOnInit() {
     this.dataSource = new GameListDataSource(this.paginator, this.sort);

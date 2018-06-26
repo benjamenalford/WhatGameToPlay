@@ -1,36 +1,65 @@
 import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator, MatSort } from '@angular/material';
+import { merge, Observable, of as observableOf } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
+// export interface GameListItem {
+//   name: string;
+//   id: number;
+// }
 export interface GameListItem {
+  gameId: number;
   name: string;
-  id: number;
+  image: string;
+  thumbnail: string;
+  minPlayers: number;
+  maxPlayers: number;
+  playingTime: number;
+  isExpansion: boolean;
+  yearPublished: number;
+  bggRating: number;
+  averageRating: number;
+  rank: number;
+  numPlays: number;
+  rating: number;
+  owned: boolean;
+  preOrdered: boolean;
+  forTrade: boolean;
+  previousOwned: boolean;
+  want: boolean;
+  wantToPlay: boolean;
+  wantToBuy: boolean;
+  wishList: boolean;
+  userComment: string;
 }
-
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: GameListItem[] = [
-  {id: 1, name: 'Hydrogen'},
-  {id: 2, name: 'Helium'},
-  {id: 3, name: 'Lithium'},
-  {id: 4, name: 'Beryllium'},
-  {id: 5, name: 'Boron'},
-  {id: 6, name: 'Carbon'},
-  {id: 7, name: 'Nitrogen'},
-  {id: 8, name: 'Oxygen'},
-  {id: 9, name: 'Fluorine'},
-  {id: 10, name: 'Neon'},
-  {id: 11, name: 'Sodium'},
-  {id: 12, name: 'Magnesium'},
-  {id: 13, name: 'Aluminum'},
-  {id: 14, name: 'Silicon'},
-  {id: 15, name: 'Phosphorus'},
-  {id: 16, name: 'Sulfur'},
-  {id: 17, name: 'Chlorine'},
-  {id: 18, name: 'Argon'},
-  {id: 19, name: 'Potassium'},
-  {id: 20, name: 'Calcium'},
+  {
+    'gameId': 7865,
+    'name': '10 Days in Africa',
+    'image': 'https://cf.geekdo-images.com/original/img/k0YHQxddSd7-fTmuamxpZiwI1Xs=/0x0/pic1229634.jpg',
+    'thumbnail': 'https://cf.geekdo-images.com/thumb/img/Kk309UtSrQu3flO3Rs_Vxuumvd4=/fit-in/200x150/pic1229634.jpg',
+    'minPlayers': 2,
+    'maxPlayers': 4,
+    'playingTime': 25,
+    'isExpansion': false,
+    'yearPublished': 2003,
+    'bggRating': 0,
+    'averageRating': 6.56336,
+    'rank': 1645,
+    'numPlays': 4,
+    'rating': -1,
+    'owned': false,
+    'preOrdered': false,
+    'forTrade': false,
+    'previousOwned': false,
+    'want': false,
+    'wantToPlay': false,
+    'wantToBuy': false,
+    'wishList': false,
+    'userComment': ''
+  }
 ];
 
 /**
@@ -71,7 +100,7 @@ export class GameListDataSource extends DataSource<GameListItem> {
    *  Called when the table is being destroyed. Use this function, to clean up
    * any open connections or free any held resources that were set up during connect.
    */
-  disconnect() {}
+  disconnect() { }
 
   /**
    * Paginate the data (client-side). If you're using server-side pagination,
@@ -95,7 +124,7 @@ export class GameListDataSource extends DataSource<GameListItem> {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
         case 'name': return compare(a.name, b.name, isAsc);
-        case 'id': return compare(+a.id, +b.id, isAsc);
+        case 'id': return compare(+a.gameId, +b.gameId, isAsc);
         default: return 0;
       }
     });
