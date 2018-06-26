@@ -19,6 +19,12 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header>Max Players</mat-header-cell>
             <mat-cell *matCellDef="let row">{{row.maxPlayers}}</mat-cell>
         </ng-container>
+        <ng-container matColumnDef="thumbnail">
+            <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <img src={{row.thumbnail}}>
+            </mat-cell>
+        </ng-container>
 
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

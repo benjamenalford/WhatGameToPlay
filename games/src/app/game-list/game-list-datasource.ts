@@ -3,6 +3,8 @@ import { MatPaginator, MatSort } from '@angular/material';
 import { merge, Observable, of as observableOf } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { BGGApiService } from '../services/bggapi.service';
+
 // TODO: Replace this with your own data model type
 // export interface GameListItem {
 //   name: string;
@@ -70,8 +72,9 @@ const EXAMPLE_DATA: GameListItem[] = [
 export class GameListDataSource extends DataSource<GameListItem> {
   data: GameListItem[] = EXAMPLE_DATA;
 
-  constructor(private paginator: MatPaginator, private sort: MatSort) {
+  constructor(private paginator: MatPaginator, private sort: MatSort, private bggAPI: BGGApiService) {
     super();
+    this.bggAPI.getGameList().subscribe(e => this.data = <GameListItem[]>e);
   }
 
   /**
@@ -80,6 +83,7 @@ export class GameListDataSource extends DataSource<GameListItem> {
    * @returns A stream of the items to be rendered.
    */
   connect(): Observable<GameListItem[]> {
+
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
