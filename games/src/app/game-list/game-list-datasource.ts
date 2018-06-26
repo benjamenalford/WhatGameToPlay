@@ -5,12 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { BGGApiService } from '../services/bggapi.service';
 
-// TODO: Replace this with your own data model type
-// export interface GameListItem {
-//   name: string;
-//   id: number;
-// }
-export interface GameListItem {
+export class GameListItem {
   gameId: number;
   name: string;
   image: string;
@@ -35,34 +30,6 @@ export interface GameListItem {
   wishList: boolean;
   userComment: string;
 }
-// TODO: replace this with real data from your application
-const EXAMPLE_DATA: GameListItem[] = [
-  {
-    'gameId': 7865,
-    'name': '10 Days in Africa',
-    'image': 'https://cf.geekdo-images.com/original/img/k0YHQxddSd7-fTmuamxpZiwI1Xs=/0x0/pic1229634.jpg',
-    'thumbnail': 'https://cf.geekdo-images.com/thumb/img/Kk309UtSrQu3flO3Rs_Vxuumvd4=/fit-in/200x150/pic1229634.jpg',
-    'minPlayers': 2,
-    'maxPlayers': 4,
-    'playingTime': 25,
-    'isExpansion': false,
-    'yearPublished': 2003,
-    'bggRating': 0,
-    'averageRating': 6.56336,
-    'rank': 1645,
-    'numPlays': 4,
-    'rating': -1,
-    'owned': false,
-    'preOrdered': false,
-    'forTrade': false,
-    'previousOwned': false,
-    'want': false,
-    'wantToPlay': false,
-    'wantToBuy': false,
-    'wishList': false,
-    'userComment': ''
-  }
-];
 
 /**
  * Data source for the GameList view. This class should
@@ -70,7 +37,7 @@ const EXAMPLE_DATA: GameListItem[] = [
  * (including sorting, pagination, and filtering).
  */
 export class GameListDataSource extends DataSource<GameListItem> {
-  data: GameListItem[] = EXAMPLE_DATA;
+  data: GameListItem[] = [];
 
   constructor(private paginator: MatPaginator, private sort: MatSort, private bggAPI: BGGApiService) {
     super();
@@ -100,6 +67,9 @@ export class GameListDataSource extends DataSource<GameListItem> {
     }));
   }
 
+  filter(value: string) {
+    // this.data.filter(e => e.name === value.toLowerCase());
+  }
   /**
    *  Called when the table is being destroyed. Use this function, to clean up
    * any open connections or free any held resources that were set up during connect.

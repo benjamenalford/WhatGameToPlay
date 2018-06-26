@@ -23,4 +23,10 @@ export class GameListComponent implements OnInit {
   ngOnInit() {
     this.dataSource = new GameListDataSource(this.paginator, this.sort, this.bggAPI);
   }
+  // filtration
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter(filterValue);
+  }
 }
