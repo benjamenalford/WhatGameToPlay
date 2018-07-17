@@ -1,5 +1,5 @@
 <mat-accordion>
-    <mat-expansion-panel (opened)="true">
+    <mat-expansion-panel>
         <mat-expansion-panel-header>
             <h2>Game Search</h2>
         </mat-expansion-panel-header>
@@ -13,7 +13,7 @@
             </div>
         </form>
     </mat-expansion-panel>
-    <mat-expansion-panel (opened)="filteredGameList" (closed)="!filteredGameList">
+    <mat-expansion-panel>
         <mat-expansion-panel-header>
             Results {{filteredGameList.length}}
         </mat-expansion-panel-header>
