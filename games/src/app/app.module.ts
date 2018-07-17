@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 import {
   MatButtonModule,
   MatCardModule,
+  MatExpansionModule,
   MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
   MatMenuModule,
   MatPaginatorModule,
+  MatProgressSpinnerModule,
   MatSidenavModule,
   MatSliderModule,
   MatSortModule,
@@ -53,7 +55,9 @@ import { SideNavComponent } from './side-nav/side-nav.component';
     HttpClientModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatSliderModule
+    MatSliderModule,
+    MatExpansionModule,
+    MatProgressSpinnerModule
   ],
   providers: [BGGApiService],
   bootstrap: [AppComponent]

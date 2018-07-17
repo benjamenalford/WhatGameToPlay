@@ -11,18 +11,19 @@ import { GameListItem } from '../models/GameListItem';
 export class BGGApiService {
 
   private _userName = 'edwalter';
-  private _gameList: Observable<any>; // = new Observable<any>();
+  private _gameList: Observable<any>;
   private _filteredList: GameListItem[] = [];
+
+  constructor(private http: HttpClient) {
+    this.http.get('https://bgg-json.azurewebsites.net/collection/' + this._userName)
+      .pipe(e => this._gameList = e);
+  }
+
   public get userName() {
     return this._userName;
   }
   public set userName(value) {
     this._userName = value;
-  }
-
-  constructor(private http: HttpClient) {
-    this.http.get('https://bgg-json.azurewebsites.net/collection/' + this._userName)
-      .pipe(e => this._gameList = e);
   }
 
   getGameList() {
