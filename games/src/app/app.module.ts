@@ -11,6 +11,7 @@ import {
   MatMenuModule,
   MatPaginatorModule,
   MatSidenavModule,
+  MatSliderModule,
   MatSortModule,
   MatTableModule,
   MatToolbarModule,
@@ -51,7 +52,8 @@ import { SideNavComponent } from './side-nav/side-nav.component';
     MatListModule,
     HttpClientModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSliderModule
   ],
   providers: [BGGApiService],
   bootstrap: [AppComponent]
