@@ -13,8 +13,8 @@ import { BGGApiService } from '../services/bggapi.service';
 export class GameSearchComponent implements OnInit {
   public gameSearchForm: FormGroup;
   private gameList: GameListItem[] = [];
-  private gameSearchObject: GameListSearchDTO = new GameListSearchDTO();
-  private filteredGameList: GameListItem[] = [];
+  public gameSearchObject: GameListSearchDTO = new GameListSearchDTO();
+  public filteredGameList: GameListItem[] = [];
   constructor(private formBuilder: FormBuilder, private BGGApi: BGGApiService) { }
 
   ngOnInit() {
