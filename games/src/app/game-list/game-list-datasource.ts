@@ -1,47 +1,18 @@
 import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator, MatSort } from '@angular/material';
 import { merge, Observable, of as observableOf } from 'rxjs';
-import { map } from 'rxjs/operators';
 
+import { map } from '../../../node_modules/rxjs/operators';
+import { GameListItem } from '../models/GameListItem';
 import { BGGApiService } from '../services/bggapi.service';
 
-export class GameListItem {
-  gameId: number;
-  name: string;
-  image: string;
-  thumbnail: string;
-  minPlayers: number;
-  maxPlayers: number;
-  playingTime: number;
-  isExpansion: boolean;
-  yearPublished: number;
-  bggRating: number;
-  averageRating: number;
-  rank: number;
-  numPlays: number;
-  rating: number;
-  owned: boolean;
-  preOrdered: boolean;
-  forTrade: boolean;
-  previousOwned: boolean;
-  want: boolean;
-  wantToPlay: boolean;
-  wantToBuy: boolean;
-  wishList: boolean;
-  userComment: string;
-}
-
-/**
- * Data source for the GameList view. This class should
- * encapsulate all logic for fetching and manipulating the displayed data
- * (including sorting, pagination, and filtering).
- */
 export class GameListDataSource extends DataSource<GameListItem> {
   data: GameListItem[] = [];
 
   constructor(private paginator: MatPaginator, private sort: MatSort, private bggAPI: BGGApiService) {
     super();
-    this.bggAPI.getGameList().subscribe(e => this.data = <GameListItem[]>e);
+    this.bggAPI.getGameList().subscribe(e => this.data = e);
+
   }
 
   /**
@@ -57,6 +28,7 @@ export class GameListDataSource extends DataSource<GameListItem> {
       observableOf(this.data),
       this.paginator.page,
       this.sort.sortChange
+
     ];
 
     // Set the paginators length
@@ -68,7 +40,8 @@ export class GameListDataSource extends DataSource<GameListItem> {
   }
 
   filter(value: string) {
-    // this.data.filter(e => e.name === value.toLowerCase());
+    this.data = this.bggAPI.getSearchedList(value);
+    // console.log(this.bggAPI.getSearchedList(value));
   }
   /**
    *  Called when the table is being destroyed. Use this function, to clean up
