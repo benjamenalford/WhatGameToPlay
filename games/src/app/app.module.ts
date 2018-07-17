@@ -4,12 +4,16 @@ import { NgModule } from '@angular/core';
 import {
   MatButtonModule,
   MatCardModule,
+  MatExpansionModule,
   MatGridListModule,
   MatIconModule,
+  MatInputModule,
   MatListModule,
   MatMenuModule,
   MatPaginatorModule,
+  MatProgressSpinnerModule,
   MatSidenavModule,
+  MatSliderModule,
   MatSortModule,
   MatTableModule,
   MatToolbarModule,
@@ -17,8 +21,10 @@ import {
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ReactiveFormsModule } from '../../node_modules/@angular/forms';
 import { AppComponent } from './app.component';
 import { GameListComponent } from './game-list/game-list.component';
+import { GameSearchComponent } from './game-search/game-search.component';
 import { HomeComponent } from './home/home.component';
 import { BGGApiService } from './services/bggapi.service';
 import { SideNavComponent } from './side-nav/side-nav.component';
@@ -28,7 +34,8 @@ import { SideNavComponent } from './side-nav/side-nav.component';
     AppComponent,
     GameListComponent,
     HomeComponent,
-    SideNavComponent
+    SideNavComponent,
+    GameSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +52,12 @@ import { SideNavComponent } from './side-nav/side-nav.component';
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-    HttpClientModule
+    HttpClientModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatSliderModule,
+    MatExpansionModule,
+    MatProgressSpinnerModule
   ],
   providers: [BGGApiService],
   bootstrap: [AppComponent]

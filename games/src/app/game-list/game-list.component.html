@@ -1,8 +1,7 @@
-<div>
+<mat-form-field class="example-full-width">
+    <input matInput placeholder="Search for Game" (keyup)="applyFilter($event.target.value)">
+</mat-form-field>
 
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-
-</div>
 <div class="mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
 
