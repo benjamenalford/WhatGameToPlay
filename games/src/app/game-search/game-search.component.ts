@@ -34,4 +34,12 @@ export class GameSearchComponent implements OnInit {
           && (g.playingTime >= this.gameSearchObject.minTimeToPlay)
       );
   }
+  setLocalUserName(name) {
+    this.BGGApi.setLocalUserName(name);
+    this.BGGApi.init();
+    this.BGGApi.getGameList().subscribe(e => this.gameList = e);
+  }
+  userName() {
+    return this.BGGApi.getLocalUserName();
+  }
 }

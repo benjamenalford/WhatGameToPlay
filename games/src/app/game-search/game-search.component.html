@@ -5,9 +5,9 @@
         </mat-expansion-panel-header>
         <form [(formGroup)]="gameSearchForm" class="example-form">
             <label for="playerNum">Number of Players</label>
-            <mat-slider min="1" max="20" step="1" value="10" thumbLabel formControlName="numberOfPlayers"></mat-slider>
+            <mat-slider min="1" max="15" step="1" value="4" thumbLabel formControlName="numberOfPlayers"></mat-slider>
             <label for="playerNum">Min Time to Play</label>
-            <mat-slider min="10" max="120" step="10" value="10" thumbLabel formControlName="minTimeToPlay"></mat-slider>
+            <mat-slider min="5" max="240" step="5" value="5" thumbLabel formControlName="minTimeToPlay"></mat-slider>
             <div>
                 <button mat-button color="primary" (click)="search()">Gimmie Games</button>
             </div>
@@ -22,7 +22,16 @@
                 <div mat-card-avatar class="example-header-image"></div>
                 <mat-card-title>{{game.name}}</mat-card-title>
             </mat-card-header>
-            <img mat-card-image src="{{game.image}}" alt=" ">
+            <img mat-card-image src="{{game.thumbnail}}" alt=" ">
         </mat-card>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            Settings
+        </mat-expansion-panel-header>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="{{userName()}}" (change)="setLocalUserName($event.srcElement.value)">
+        </mat-form-field>
+        <p>You may need to refresh after setting your name. </p>
     </mat-expansion-panel>
 </mat-accordion>
