@@ -39,7 +39,8 @@ export class BGGApiService {
   }
 
   getLocalUserName(): string {
-    return this._localUser = localStorage.getItem('BGGUserName');
+    this._localUser = localStorage.getItem('BGGUserName');
+    return this._localUser;
   }
 
   setLocalUserName(name) {
