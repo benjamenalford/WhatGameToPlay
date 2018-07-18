@@ -19,7 +19,6 @@ export class GameSearchComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
-    console.log(this.gameSearchForm);
     this.BGGApi.getGameList().subscribe(e => this.gameList = e);
   }
 

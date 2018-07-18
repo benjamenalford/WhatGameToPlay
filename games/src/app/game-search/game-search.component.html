@@ -1,11 +1,11 @@
 <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel [expanded]="true">
         <mat-expansion-panel-header>
             <h2>Game Search</h2>
         </mat-expansion-panel-header>
         <form [(formGroup)]="gameSearchForm" class="example-form">
             <label for="playerNum">Number of Players</label>
-            <mat-slider min="1" max="20" step="1" value="10" vertical thumbLabel formControlName="numberOfPlayers"></mat-slider>
+            <mat-slider min="1" max="20" step="1" value="10" thumbLabel formControlName="numberOfPlayers"></mat-slider>
             <label for="playerNum">Min Time to Play</label>
             <mat-slider min="10" max="120" step="10" value="10" thumbLabel formControlName="minTimeToPlay"></mat-slider>
             <div>
@@ -13,9 +13,9 @@
             </div>
         </form>
     </mat-expansion-panel>
-    <mat-expansion-panel>
+    <mat-expansion-panel [expanded]="filteredGameList.length >0">
         <mat-expansion-panel-header>
-            Results {{filteredGameList.length}}
+            <h2>Results: {{filteredGameList.length}}</h2>
         </mat-expansion-panel-header>
         <mat-card class="example-card" *ngFor="let game of filteredGameList">
             <mat-card-header>
