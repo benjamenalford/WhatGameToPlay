@@ -22,7 +22,11 @@
                 <div mat-card-avatar class="example-header-image"></div>
                 <mat-card-title>{{game.name}}</mat-card-title>
             </mat-card-header>
-            <img mat-card-image src="{{game.image}}" alt=" ">
+            <mat-card-content>
+                Avg Play Time: {{game.playingTime}}
+                <img mat-card-image src="{{game.image}}" alt=" ">
+            </mat-card-content>
+
         </mat-card>
     </mat-expansion-panel>
     <mat-expansion-panel>
